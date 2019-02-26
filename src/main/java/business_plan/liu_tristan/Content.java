@@ -1,6 +1,6 @@
 package business_plan.liu_tristan;
 
-public interface Content
+public interface Content extends Comparable<Content>
 {
 	public Content deepCopy();
 
@@ -9,7 +9,17 @@ public interface Content
 	 */
 	@Override
 	boolean equals(Object obj);
+
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	default int compareTo(Content o)
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
-	edit();
-	display();
+	
+	
 }

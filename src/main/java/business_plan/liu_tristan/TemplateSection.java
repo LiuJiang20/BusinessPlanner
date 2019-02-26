@@ -46,30 +46,86 @@ public class TemplateSection
 	public boolean equals(Object object)
 	{
 		TemplateSection t =(TemplateSection)object;
-		if(
-			(!(category == null && t.category==null || this.category.equals(t.category)))
-			|| (!(name ==null && t.name ==null || this.name.equals(t.name)))
-			||  children.size() != t.children.size()
-			|| contents.size() != t.contents.size()
-			|| childLimit != t.childLimit)
+		if(t== null)
+		{
+			return false;
+		}
+		if(parent != t.parent)
 		{
 			return false;
 		}
 		
-		for(int i=0; i< this.children.size();i++)
+		if(category == null)
 		{
-			TemplateSection t1 =children.get(i);
-			TemplateSection t2 = t.children.get(i);
-			if(!(t1 == null && t2 ==null || t1.equals(t2)))
+			if(t.category != null)
+			{
+				return false;
+			}
+		}
+		else
+		{
+			if(!category.equals(t.category))
 			{
 				return false;
 			}
 		}
 		
+		if(name == null)
+		{
+			if(t.name != null)
+			{
+				return false;
+			}
+		}
+		else
+		{
+			if(!name.equals(t.name))
+			{
+				return false;
+			}
+		}
+		
+		if(childLimit != t.childLimit)
+		{
+			return false;
+		}
+		
+		if(children.size() != t.children.size())
+		{
+			return false;
+		}
+		
+		if(contents.size() != t.contents.size())
+		{
+			return false;
+		}
+		
+		
+		ArrayList<TemplateSection> temp1 = (ArrayList<TemplateSection>) children.clone();
+		ArrayList<TemplateSection> temp2 = (ArrayList<TemplateSection>) t.children.clone();
+		temp1.sort((TemplateSection a, TemplateSection b) -> a.name.compareTo(b.name));
+		temp2.sort((TemplateSection a, TemplateSection b) -> a.name.compareTo(b.name));
+		for(int i=0; i< this.children.size();i++)
+		{
+			
+			TemplateSection t1 =temp1.get(i);
+			
+			TemplateSection t2 = temp2.get(i);
+			if(!t1.equals(t2))
+			{
+				return false;
+			}
+		}
+		
+		ArrayList<Content> temp3 = (ArrayList<Content>) contents.clone();
+		ArrayList<Content> temp4 = (ArrayList<Content>) t.contents.clone();
+		temp3.sort((Content a, Content b) -> a.compareTo(b));
+		temp4.sort((Content a, Content b) -> a.compareTo(b));
 		for(int i=0; i<contents.size();i++)
 		{
-			Content c1 = contents.get(i);
-			Content c2 = t.contents.get(i);
+			
+			Content c1 =temp3.get(i);
+			Content c2 = temp4.get(i);
 			if(!(c1 == null && c2 ==null || c1.equals(c2)))
 			{
 				return false;

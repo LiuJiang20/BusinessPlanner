@@ -190,26 +190,62 @@ public class Template
 		// TODO Auto-generated method stub
 		Template template = (Template) object;
 	
-		if(!(this.userTemplateName==null && template.userTemplateName==null 
-				|| this.userTemplateName.equals(template.userTemplateName)))
+		
+		if(this.userTemplateName == null)
 		{
-			return false;
+			if(template.userTemplateName != null)
+			{return false;}
+		}
+		else
+		{
+			if(! userTemplateName.equals(template.userTemplateName))
+			{
+				return false;
+			}
 		}
 		
-		if(!(this.developerTemplateName==null && template.developerTemplateName==null
-				|| this.developerTemplateName.equals(template.developerTemplateName)))
+		if(developerTemplateName == null)
 		{
-			return false;
+			if(template.developerTemplateName !=null)
+			{return false;}
+		}
+		else
+		{
+			if(!developerTemplateName.equals(template.developerTemplateName))
+			{
+				return false;
+			}
 		}
 		
-		if(!(this.root ==null && template.root ==null || root.equals(template.root)))
+		if(root == null)
 		{
-			return false;
+			if(template.root != null)
+			{
+				return false;
+			}
+		}
+		else
+		{
+			if(!root.equals(template.root))
+			{
+				return false;
+			}
 		}
 		
-		if(!(this.templateRoot ==null && template.templateRoot==null || root.equals(template.templateRoot)))
+		
+		if(templateRoot == null)
 		{
-			return false;
+			if(template.templateRoot!= null)
+			{
+				return false;
+			}
+		}
+		else
+		{
+			if(!templateRoot.equals(template.templateRoot))
+			{
+				return false;
+			}
 		}
 		return true;
 //		return this.developerTemplateName.equals(template.developerTemplateName)

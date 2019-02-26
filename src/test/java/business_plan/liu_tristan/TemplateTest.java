@@ -75,7 +75,15 @@ class TemplateTest
 		t2.setTemplateRoot(null);
 		assertEquals(t1, t2);
 		
+		//Check if one null root works
+		t1.setRoot(root1);
+		assertNotEquals(t1, t2);
 		
+		
+		//Check if the other null root works
+		t1.setTemplateRoot(root1);
+		t1.setRoot(null);
+		assertNotEquals(t1, t2);
 		
 	}
 	
