@@ -1,5 +1,7 @@
 package business_plan.liu_tristan;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.util.ArrayList;
 
 import javax.swing.plaf.basic.BasicBorders.ToggleButtonBorder;
@@ -44,8 +46,9 @@ public class TemplateSection
 	public boolean equals(Object object)
 	{
 		TemplateSection t =(TemplateSection)object;
-		if(!this.category.equals(t.category)
-			|| !this.name.equals(t.name)
+		if(
+			(!(category == null && t.category==null || this.category.equals(t.category)))
+			|| (!(name ==null && t.name ==null || this.name.equals(t.name)))
 			||  children.size() != t.children.size()
 			|| contents.size() != t.contents.size()
 			|| childLimit != t.childLimit)
@@ -55,7 +58,9 @@ public class TemplateSection
 		
 		for(int i=0; i< this.children.size();i++)
 		{
-			if(!children.get(i).equals(t.children.get(i)))
+			TemplateSection t1 =children.get(i);
+			TemplateSection t2 = t.children.get(i);
+			if(!(t1 == null && t2 ==null || t1.equals(t2)))
 			{
 				return false;
 			}
@@ -63,7 +68,9 @@ public class TemplateSection
 		
 		for(int i=0; i<contents.size();i++)
 		{
-			if(contents.get(i).equals(t.contents.get(i)))
+			Content c1 = contents.get(i);
+			Content c2 = t.contents.get(i);
+			if(!(c1 == null && c2 ==null || c1.equals(c2)))
 			{
 				return false;
 			}
