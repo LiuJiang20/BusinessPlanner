@@ -42,6 +42,12 @@ public class Text implements Content
 		Text t = (Text) obj;
 		return text.equals(t);
 	}
-
 	
+	public void edit()
+	{
+	}
+	
+	public void display()
+	{
+	}
 }
