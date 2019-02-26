@@ -6,6 +6,38 @@ import org.junit.jupiter.api.Test;
 
 class TemplateSectionTest
 {
+	void testConstruct()
+	{
+		TemplateSection section1 = new TemplateSection("Mission", "Mission 1");
+		assert section1.category == "Mission";
+		assert section1.name == "Mission 1";
+		assert section1.childLimit == 1;
+		
+		TemplateSection section2 = new TemplateSection("Objective", "Objective 1", 5);
+		assert section2.category == "Objective";
+		assert section2.name == "Objective 1";
+		assert section2.childLimit == 5;
+	}
+	
+	void testEquals()
+	{
+		TemplateSection section1 = new TemplateSection("Vision", "Vision", 1);
+		TemplateSection section2 = new TemplateSection("Mission", "Mission 1", 1);
+		TemplateSection section3 = new TemplateSection("Mission", "Mission 2", 3);
+		TemplateSection section4 = new TemplateSection("Objective", "Objective 1", 5);
+		TemplateSection section5 = new TemplateSection("Objective", "Objective 1", 5);
+		TemplateSection section6 = new TemplateSection("Objective", "Objective 3", 7);
+		
+		assert section1.equals(section2) == false;
+		assert section2.equals(section3) == False;
+		assert section4.equals(section5) == True;
+		assert section5.equals(section6) == False;
+		
+		section6.setName("Objective 1");
+		section6.setChildLimit(5);
+		assert section6.equals(section5) == True;
+		assert section4.equals(section6) == True;
+	}
 
 //	@Test
 //	void test()
@@ -74,41 +106,4 @@ class TemplateSectionTest
 //		
 //		
 //	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
