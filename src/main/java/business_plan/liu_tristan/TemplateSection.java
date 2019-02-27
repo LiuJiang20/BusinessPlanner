@@ -237,9 +237,4 @@ public class TemplateSection
 	{
 		this.contents = contents;
 	}
-	
-
-	
-
-
 }

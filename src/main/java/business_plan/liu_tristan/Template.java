@@ -192,9 +192,6 @@ public class Template
 		return this.developerTemplateName.equals(template.developerTemplateName)
 				&& this.userTemplateName.equals(template.userTemplateName)
 				&& this.root.equals(template.root)
-				&& this.templateRoot.equals(template.templateRoot);
-		
-	}
-
-	
+				&& this.templateRoot.equals(template.templateRoot);	
+	}	
 }
