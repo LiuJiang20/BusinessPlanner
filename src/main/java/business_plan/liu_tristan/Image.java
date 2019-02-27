@@ -8,6 +8,10 @@ public class Image implements Content
 	/**
 	 * @param uRL
 	 */
+	public Image()
+	{
+		// TODO Auto-generated constructor stub
+	}
 	public Image(String uRL)
 	{
 		super();

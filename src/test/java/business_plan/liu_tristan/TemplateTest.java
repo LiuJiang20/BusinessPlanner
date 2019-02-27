@@ -88,9 +88,9 @@ class TemplateTest
 	}
 	
 	@Test
-	void testDeepCopy() throws ChildLIimitException
+	void testDeepCopy() throws ChildLIimitException, NullChildException
 	{
-		
+		//Test if the deepcopy work for vmosa
 		TemplateSection root = new TemplateSection("Vision", "Vision");
 		TemplateSection node1 = new TemplateSection("Mission", "Mission");
 		TemplateSection node2 = new TemplateSection("Objective", "Objective");
@@ -104,6 +104,92 @@ class TemplateTest
 		
 		Template vmosa = new Template(root, root.deepCopy());
 		Template template = vmosa.deepCopy();
+		assertEquals(vmosa, template);
+		
+		
+		//Test if the deepcopy work for Centre program plan
+		TemplateSection root2 = new TemplateSection("Mission", "Mission");
+		 node1 = new TemplateSection("Objective", "Objective");
+		 node2 = new TemplateSection("Goal", "Goal");
+		 node3 = new TemplateSection("Subgoal", "Subgoal");
+		 node4 = new TemplateSection("Action", "Action");
+		 
+		 root2.addChild(node1);
+			node1.addChild(node2);
+			node2.addChild(node3);
+			node3.addChild(node4);
+		Template centre = new Template(root, root.deepCopy());
+		template = centre.deepCopy();
+		assertEquals(centre, template);
+	}
+	
+	@Test
+	void testLoad() throws ChildLIimitException, NoParentException, NullChildException
+	{
+		//Build the tree structure
+		TemplateSection root = new TemplateSection("Vision", "Vision");
+		TemplateSection node1 = new TemplateSection("Mission", "Mission",3);
+		TemplateSection node2 = new TemplateSection("Objective", "Objective",3);
+		TemplateSection node3 = new TemplateSection("Strategy", "Strategy",3);
+		TemplateSection node4 = new TemplateSection("Action", "Action");
+		
+		root.addChild(node1);
+		node1.addChild(node2);
+		node2.addChild(node3);
+		node3.addChild(node4);
+	
+		TemplateSection templateroot = root.deepCopy();
+		Template vmosa = new Template(root, templateroot);
+		
+		
+		//Test load and save
+		vmosa.setUserTemplateName("VMOSA");
+		vmosa.setDeveloperTemplateName("VMOSA");
+		vmosa.save();
+		Template template = Template.load("VMOSA.xml");
+		assertEquals(vmosa, template);
+		
+		//Give more complicated structure to vmosa
+		vmosa.addBranch(templateroot.children.get(0).children.get(0));
+		vmosa.save();
+		template = Template.load("VMOSA.xml");
+		assertEquals(vmosa, template);
+		
+		//Give content to vision
+		root.addContent(new Text("Hello"));
+		vmosa.save();
+		template = Template.load("VMOSA.xml");
+		assertEquals(vmosa, template);
+		
+		//try a different plan
+		TemplateSection root2 = new TemplateSection("Mission", "Mission");
+		 node1 = new TemplateSection("Objective", "Objective",2);
+		 node2 = new TemplateSection("Goal", "Goal",2);
+		 node3 = new TemplateSection("Subgoal", "Subgoal",2);
+		 node4 = new TemplateSection("Action", "Action");
+		 
+		 root2.addChild(node1);
+		node1.addChild(node2);
+		node2.addChild(node3);
+		node3.addChild(node4);
+		
+		 templateroot = root2.deepCopy();
+		 vmosa = new Template(root2, templateroot);
+		 vmosa.setUserTemplateName("VMOSA");
+			vmosa.setDeveloperTemplateName("VMOSA");
+		 vmosa.save();
+		 
+		 template = Template.load("VMOSA.xml");
+		assertEquals(vmosa, template);
+		
+		vmosa.addBranch(templateroot.children.get(0).children.get(0));
+		vmosa.save();
+		template = Template.load("VMOSA.xml");
+		assertEquals(vmosa, template);
+		
+		root2.children.get(0).addContent(new Text("Hello"));
+		vmosa.save();
+		template = Template.load("VMOSA.xml");
 		assertEquals(vmosa, template);
 		
 		

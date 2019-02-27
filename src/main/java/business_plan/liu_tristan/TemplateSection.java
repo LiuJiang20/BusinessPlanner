@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import javax.swing.plaf.basic.BasicBorders.ToggleButtonBorder;
 
 import org.junit.internal.Throwables;
+import java.beans.*;
+
 
 public class TemplateSection
 {
@@ -24,6 +26,10 @@ public class TemplateSection
 	 * @param name
 	 */
 
+	public TemplateSection()
+	{
+		// TODO Auto-generated constructor stub
+	}
 	public TemplateSection(String category, String name,double childLimit)
 	{
 		
@@ -39,6 +45,76 @@ public class TemplateSection
 		this(category, name, 1);
 	}
 	
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((category == null) ? 0 : category.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(childLimit);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((children == null) ? 0 : children.hashCode());
+		result = prime * result + ((contents == null) ? 0 : contents.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((parent == null) ? 0 : parent.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+//	@Override
+//	public boolean equals(Object obj)
+//	{
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		TemplateSection other = (TemplateSection) obj;
+//		if (category == null)
+//		{
+//			if (other.category != null)
+//				return false;
+//		} else if (!category.equals(other.category))
+//			return false;
+//		if (Double.doubleToLongBits(childLimit) != Double.doubleToLongBits(other.childLimit))
+//			return false;
+//		if (children == null)
+//		{
+//			if (other.children != null)
+//				return false;
+//		} else if (!children.equals(other.children))
+//			return false;
+//		if (contents == null)
+//		{
+//			if (other.contents != null)
+//				return false;
+//		} else if (!contents.equals(other.contents))
+//			return false;
+//		if (name == null)
+//		{
+//			if (other.name != null)
+//				return false;
+//		} else if (!name.equals(other.name))
+//			return false;
+//		if (parent == null)
+//		{
+//			if (other.parent != null)
+//				return false;
+//		} else if (!parent.equals(other.parent))
+//			return false;
+//		return true;
+//	}
+
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -50,11 +126,38 @@ public class TemplateSection
 		{
 			return false;
 		}
-		if(parent != t.parent)
+		//Usually way to test parents are equal will end up in infinite loop
+		//thus here we only test the name, and contegory
+		if(parent ==null)
 		{
-			return false;
+			if(t.parent !=null)
+				return false;
 		}
-		
+		else
+		{
+			if(name ==null)
+			{
+				if (t.name != null)
+					return false;
+			}	
+			else
+			{
+				if(!name.equals(t.name))
+					return false;
+			}
+			
+			if(category ==null)
+			{
+				if (t.category != null)
+					return false;
+			}	
+			else
+			{
+				if(!category.equals(t.category))
+					return false;
+			}
+		}
+			
 		if(category == null)
 		{
 			if(t.category != null)
@@ -134,7 +237,6 @@ public class TemplateSection
 		return true;
 		
 	}
-
 	public void addContent(Content c)
 	{
 		contents.add(c);
@@ -151,12 +253,19 @@ public class TemplateSection
 		
 	}
 	
-	
-	public void addChild(TemplateSection child) throws ChildLIimitException
+	@Transient
+	public void addChild(TemplateSection child) throws ChildLIimitException, NullChildException
 	{
+		if(child == null)
+		{
+			throw new NullChildException();
+		}
+		
 		if(childLimit > children.size())
 		{
+			child.setParent(this);
 			children.add(child);
+			
 		}
 		else
 		{
@@ -168,6 +277,7 @@ public class TemplateSection
 	{
 		if(children.indexOf(child)!=-1)
 		{
+			child.setParent(null);
 			children.remove(child);
 		}
 		else

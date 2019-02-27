@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="9.0.4" class="java.beans.XMLDecoder">
+ <object class="business_plan.liu_tristan.Template">
+  <void property="developerTemplateName">
+   <string>VMOSA</string>
+  </void>
+  <void property="root">
+   <object class="business_plan.liu_tristan.TemplateSection" id="TemplateSection0">
+    <void property="category">
+     <string>Mission</string>
+    </void>
+    <void property="childLimit">
+     <double>1.0</double>
+    </void>
+    <void property="children">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="business_plan.liu_tristan.TemplateSection" id="TemplateSection1">
+        <void property="category">
+         <string>Objective</string>
+        </void>
+        <void property="childLimit">
+         <double>2.0</double>
+        </void>
+        <void property="children">
+         <object class="java.util.ArrayList">
+          <void method="add">
+           <object class="business_plan.liu_tristan.TemplateSection" id="TemplateSection2">
+            <void property="category">
+             <string>Goal</string>
+            </void>
+            <void property="childLimit">
+             <double>2.0</double>
+            </void>
+            <void property="children">
+             <object class="java.util.ArrayList">
+              <void method="add">
+               <object class="business_plan.liu_tristan.TemplateSection" id="TemplateSection3">
+                <void property="category">
+                 <string>Subgoal</string>
+                </void>
+                <void property="childLimit">
+                 <double>2.0</double>
+                </void>
+                <void property="children">
+                 <object class="java.util.ArrayList">
+                  <void method="add">
+                   <object class="business_plan.liu_tristan.TemplateSection">
+                    <void property="category">
+                     <string>Action</string>
+                    </void>
+                    <void property="childLimit">
+                     <double>1.0</double>
+                    </void>
+                    <void property="children">
+                     <object class="java.util.ArrayList"/>
+                    </void>
+                    <void property="contents">
+                     <object class="java.util.ArrayList"/>
+                    </void>
+                    <void property="name">
+                     <string>Action</string>
+                    </void>
+                    <void property="parent">
+                     <object idref="TemplateSection3"/>
+                    </void>
+                   </object>
+                  </void>
+                 </object>
+                </void>
+                <void property="contents">
+                 <object class="java.util.ArrayList"/>
+                </void>
+                <void property="name">
+                 <string>Subgoal</string>
+                </void>
+                <void property="parent">
+                 <object idref="TemplateSection2"/>
+                </void>
+               </object>
+              </void>
+             </object>
+            </void>
+            <void property="contents">
+             <object class="java.util.ArrayList"/>
+            </void>
+            <void property="name">
+             <string>Goal</string>
+            </void>
+            <void property="parent">
+             <object idref="TemplateSection1"/>
+            </void>
+           </object>
+          </void>
+          <void method="add">
+           <object class="business_plan.liu_tristan.TemplateSection">
+            <void property="category">
+             <string>Goal</string>
+            </void>
+            <void property="childLimit">
+             <double>2.0</double>
+            </void>
+            <void property="children">
+             <object class="java.util.ArrayList">
+              <void method="add">
+               <object class="business_plan.liu_tristan.TemplateSection">
+                <void property="category">
+                 <string>Subgoal</string>
+                </void>
+                <void property="childLimit">
+                 <double>2.0</double>
+                </void>
+                <void property="children">
+                 <object class="java.util.ArrayList">
+                  <void method="add">
+                   <object class="business_plan.liu_tristan.TemplateSection">
+                    <void property="category">
+                     <string>Action</string>
+                    </void>
+                    <void property="childLimit">
+                     <double>1.0</double>
+                    </void>
+                    <void property="children">
+                     <object class="java.util.ArrayList"/>
+                    </void>
+                    <void property="contents">
+                     <object class="java.util.ArrayList"/>
+                    </void>
+                    <void property="name">
+                     <string>Action</string>
+                    </void>
+                    <void property="parent">
+                     <object idref="TemplateSection3"/>
+                    </void>
+                   </object>
+                  </void>
+                 </object>
+                </void>
+                <void property="contents">
+                 <object class="java.util.ArrayList"/>
+                </void>
+                <void property="name">
+                 <string>Subgoal</string>
+                </void>
+                <void property="parent">
+                 <object idref="TemplateSection2"/>
+                </void>
+               </object>
+              </void>
+             </object>
+            </void>
+            <void property="contents">
+             <object class="java.util.ArrayList"/>
+            </void>
+            <void property="name">
+             <string>Goal</string>
+            </void>
+            <void property="parent">
+             <object idref="TemplateSection1"/>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void property="contents">
+         <object class="java.util.ArrayList">
+          <void method="add">
+           <object class="business_plan.liu_tristan.Text">
+            <void property="text">
+             <string>Hello</string>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void property="name">
+         <string>Objective</string>
+        </void>
+        <void property="parent">
+         <object idref="TemplateSection0"/>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="contents">
+     <object class="java.util.ArrayList"/>
+    </void>
+    <void property="name">
+     <string>Mission</string>
+    </void>
+   </object>
+  </void>
+  <void property="templateRoot">
+   <object class="business_plan.liu_tristan.TemplateSection">
+    <void property="category">
+     <string>Mission</string>
+    </void>
+    <void property="childLimit">
+     <double>1.0</double>
+    </void>
+    <void property="children">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="business_plan.liu_tristan.TemplateSection">
+        <void property="category">
+         <string>Objective</string>
+        </void>
+        <void property="childLimit">
+         <double>2.0</double>
+        </void>
+        <void property="children">
+         <object class="java.util.ArrayList">
+          <void method="add">
+           <object class="business_plan.liu_tristan.TemplateSection">
+            <void property="category">
+             <string>Goal</string>
+            </void>
+            <void property="childLimit">
+             <double>2.0</double>
+            </void>
+            <void property="children">
+             <object class="java.util.ArrayList">
+              <void method="add">
+               <object class="business_plan.liu_tristan.TemplateSection">
+                <void property="category">
+                 <string>Subgoal</string>
+                </void>
+                <void property="childLimit">
+                 <double>2.0</double>
+                </void>
+                <void property="children">
+                 <object class="java.util.ArrayList">
+                  <void method="add">
+                   <object class="business_plan.liu_tristan.TemplateSection">
+                    <void property="category">
+                     <string>Action</string>
+                    </void>
+                    <void property="childLimit">
+                     <double>1.0</double>
+                    </void>
+                    <void property="children">
+                     <object class="java.util.ArrayList"/>
+                    </void>
+                    <void property="contents">
+                     <object class="java.util.ArrayList"/>
+                    </void>
+                    <void property="name">
+                     <string>Action</string>
+                    </void>
+                    <void property="parent">
+                     <object idref="TemplateSection3"/>
+                    </void>
+                   </object>
+                  </void>
+                 </object>
+                </void>
+                <void property="contents">
+                 <object class="java.util.ArrayList"/>
+                </void>
+                <void property="name">
+                 <string>Subgoal</string>
+                </void>
+                <void property="parent">
+                 <object idref="TemplateSection2"/>
+                </void>
+               </object>
+              </void>
+             </object>
+            </void>
+            <void property="contents">
+             <object class="java.util.ArrayList"/>
+            </void>
+            <void property="name">
+             <string>Goal</string>
+            </void>
+            <void property="parent">
+             <object idref="TemplateSection1"/>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void property="contents">
+         <object class="java.util.ArrayList"/>
+        </void>
+        <void property="name">
+         <string>Objective</string>
+        </void>
+        <void property="parent">
+         <object idref="TemplateSection0"/>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="contents">
+     <object class="java.util.ArrayList"/>
+    </void>
+    <void property="name">
+     <string>Mission</string>
+    </void>
+   </object>
+  </void>
+  <void property="userTemplateName">
+   <string>VMOSA</string>
+  </void>
+ </object>
+</java>

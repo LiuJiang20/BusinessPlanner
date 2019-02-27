@@ -19,6 +19,10 @@ public class Template
 	TemplateSection root;
 	TemplateSection templateRoot;
 
+	public Template()
+	{
+		
+	}
 	public Template(TemplateSection root, TemplateSection templateRoot)
 	{
 		this.root = root;
@@ -35,7 +39,7 @@ public class Template
 		return deepCopy;
 	}
 
-	public void addBranch(TemplateSection node) throws ChildLIimitException, NoParentException
+	public void addBranch(TemplateSection node) throws ChildLIimitException, NoParentException, NullChildException
 	{
 		TemplateSection section = findBranch(node, templateRoot);
 		if(node.parent != null)
@@ -76,16 +80,7 @@ public class Template
 	public void save()
 	{
 		XMLEncoder encoder =null;
-		String fileName;
-		if(userTemplateName.equals(developerTemplateName))
-		{
-			fileName = "T"+developerTemplateName;
-		}
-		else
-		{
-			fileName = userTemplateName;
-		}
-		fileName+=".xml";
+		String fileName = userTemplateName+".xml";
 		
 		try
 		{
@@ -93,7 +88,7 @@ public class Template
 		} 
 		catch (FileNotFoundException fileNotFound)
 		{
-			System.out.println("ERROR: While Creating or Opening the File" +fileName +".xml");
+			System.out.println("ERROR: While Creating or Opening the File" +fileName);
 		}
 		
 		encoder.writeObject(this);
@@ -180,80 +175,135 @@ public class Template
 		this.templateRoot = templateRoot;
 	}
 
-	
-	/* 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((developerTemplateName == null) ? 0 : developerTemplateName.hashCode());
+		result = prime * result + ((root == null) ? 0 : root.hashCode());
+		result = prime * result + ((templateRoot == null) ? 0 : templateRoot.hashCode());
+		result = prime * result + ((userTemplateName == null) ? 0 : userTemplateName.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object object)
+	public boolean equals(Object obj)
 	{
-		// TODO Auto-generated method stub
-		Template template = (Template) object;
-	
-		
-		if(this.userTemplateName == null)
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Template other = (Template) obj;
+		if (developerTemplateName == null)
 		{
-			if(template.userTemplateName != null)
-			{return false;}
-		}
-		else
-		{
-			if(! userTemplateName.equals(template.userTemplateName))
-			{
+			if (other.developerTemplateName != null)
 				return false;
-			}
-		}
-		
-		if(developerTemplateName == null)
+		} else if (!developerTemplateName.equals(other.developerTemplateName))
+			return false;
+		if (root == null)
 		{
-			if(template.developerTemplateName !=null)
-			{return false;}
-		}
-		else
-		{
-			if(!developerTemplateName.equals(template.developerTemplateName))
-			{
+			if (other.root != null)
 				return false;
-			}
-		}
-		
-		if(root == null)
+    	} else if (!root.equals(other.root))
+			return false;
+		if (templateRoot == null)
 		{
-			if(template.root != null)
-			{
+			if (other.templateRoot != null)
 				return false;
-			}
-		}
-		else
+		} else if (!templateRoot.equals(other.templateRoot))
+			return false;
+		if (userTemplateName == null)
 		{
-			if(!root.equals(template.root))
-			{
+			if (other.userTemplateName != null)
 				return false;
-			}
-		}
-		
-		
-		if(templateRoot == null)
-		{
-			if(template.templateRoot!= null)
-			{
-				return false;
-			}
-		}
-		else
-		{
-			if(!templateRoot.equals(template.templateRoot))
-			{
-				return false;
-			}
-		}
+		} else if (!userTemplateName.equals(other.userTemplateName))
+			return false;
 		return true;
-//		return this.developerTemplateName.equals(template.developerTemplateName)
-//				&& this.userTemplateName.equals(template.userTemplateName)
-//				&& this.root.equals(template.root)
-//				&& this.templateRoot.equals(template.templateRoot);
-		
 	}
+
+	
+//	/* 
+//	 * @see java.lang.Object#equals(java.lang.Object)
+//	 */
+//	@Override
+//	public boolean equals(Object object)
+//	{
+//		// TODO Auto-generated method stub
+//		Template template = (Template) object;
+//	
+//		
+//		if(this.userTemplateName == null)
+//		{
+//			if(template.userTemplateName != null)
+//			{return false;}
+//		}
+//		else
+//		{
+//			if(! userTemplateName.equals(template.userTemplateName))
+//			{
+//				return false;
+//			}
+//		}
+//		
+//		if(developerTemplateName == null)
+//		{
+//			if(template.developerTemplateName !=null)
+//			{return false;}
+//		}
+//		else
+//		{
+//			if(!developerTemplateName.equals(template.developerTemplateName))
+//			{
+//				return false;
+//			}
+//		}
+//		
+//		if(root == null)
+//		{
+//			if(template.root != null)
+//			{
+//				return false;
+//			}
+//		}
+//		else
+//		{
+//			if(!root.equals(template.root))
+//			{
+//				return false;
+//			}
+//		}
+//		
+//		
+//		if(templateRoot == null)
+//		{
+//			if(template.templateRoot!= null)
+//			{
+//				return false;
+//			}
+//		}
+//		else
+//		{
+//			if(!templateRoot.equals(template.templateRoot))
+//			{
+//				return false;
+//			}
+//		}
+//		return true;
+////		return this.developerTemplateName.equals(template.developerTemplateName)
+////				&& this.userTemplateName.equals(template.userTemplateName)
+////				&& this.root.equals(template.root)
+////				&& this.templateRoot.equals(template.templateRoot);
+//		
+//	}
 
 	
 }
