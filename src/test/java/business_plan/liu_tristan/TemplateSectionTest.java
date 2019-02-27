@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class TemplateSectionTest
 {
+	@Test
 	static void testConstruct()
 	{
 		TemplateSection section1 = new TemplateSection("Mission", "Mission 1");
@@ -20,7 +21,8 @@ class TemplateSectionTest
 		assert section2.childLimit == 5;
 	}
 	
-	static void testEquals()
+	@Test
+	static void testEquals() throws ChildLIimitException
 	{
 		TemplateSection section1 = new TemplateSection("Vision", "Vision", 1);
 		TemplateSection section2 = new TemplateSection("Mission", "Mission 1", 1);
@@ -28,6 +30,7 @@ class TemplateSectionTest
 		TemplateSection section4 = new TemplateSection("Objective", "Objective 1", 5);
 		TemplateSection section5 = new TemplateSection("Objective", "Objective 1", 5);
 		TemplateSection section6 = new TemplateSection("Objective", "Objective 3", 7);
+		TemplateSection section7 = null;
 		
 		assert section1.equals(section2) == false;
 		assert section2.equals(section3) == false;
@@ -38,8 +41,20 @@ class TemplateSectionTest
 		section6.setChildLimit(5);
 		assert section6.equals(section5) == true;
 		assert section4.equals(section6) == true;
+		
+		assert section1.equals(section7) == false;
+		assert section1.equals(section1) == true;
+		
+		section1.setParent(section2);
+		assert section1.equals(section2) == false;
+		section3.setParent(section2);
+		assert section1.equals(section3) == false;
+		section1.addChild(section4);
+		section2.addChild(section5);
+		assert section1.equals(section2) == true;
 	}
 	
+	@Test
 	static void testDeepCopy()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
@@ -47,6 +62,7 @@ class TemplateSectionTest
 		assert section1.equals(section2) == true;
 	}
 	
+	@Test
 	static void testContent()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
@@ -58,11 +74,12 @@ class TemplateSectionTest
 			section1.deleteContent(c);
 		} catch (ContentNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Works.");
 		}
 		assert section1.contents.size() == 0;
 	}
 	
+	@Test
 	static void testChild()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
@@ -84,6 +101,7 @@ class TemplateSectionTest
 		assert section1.children.size() == 0;
 	}
 	
+	@Test
 	static void testCategoryName()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
@@ -95,6 +113,7 @@ class TemplateSectionTest
 		assert section1.getName() == "Mission";
 	}
 	
+	@Test
 	static void testParent()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
@@ -104,6 +123,7 @@ class TemplateSectionTest
 		assert section1.getParent() == section2;
 	}
 	
+	@Test
 	static void testChildLimit()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
@@ -112,6 +132,7 @@ class TemplateSectionTest
 		assert section1.getChildLimit() == 2;
 	}
 	
+	@Test
 	static void testGetContents()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
@@ -121,7 +142,8 @@ class TemplateSectionTest
 		assert section1.getContents().size() == 1;
 	}
 	
-	public static void main(String[] args)
+	@Test
+	public static void main(String[] args) throws ChildLIimitException
 	{
 		testConstruct();
 		testEquals();
