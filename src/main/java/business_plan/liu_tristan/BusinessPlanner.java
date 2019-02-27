@@ -1,5 +1,6 @@
 package business_plan.liu_tristan;
 
+//Note:We have decided not to use this in our current implementation but it is here for reference.
 public class BusinessPlanner
 {
 	Template developerTemplate;
