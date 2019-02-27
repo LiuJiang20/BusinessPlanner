@@ -1,7 +1,10 @@
 package business_plan.liu_tristan;
 
+import org.junit.jupiter.api.Test;
+
 public class TextTest
 {
+	@Test
 	public static void main(String[] args)
 	{
 		Text t = new Text("hello");
