@@ -13,6 +13,7 @@ class TemplateTest
 	 * Test if the equals() function works fine
 	 */
 	@Test
+	//This test looks for equivalence betweent Template objects after many alterations.
 	void testEquals()
 	{
 		//Case two template should be equal
