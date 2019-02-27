@@ -10,6 +10,6 @@ public interface Content
 	@Override
 	boolean equals(Object obj);
 	
-	edit();
-	display();
+	void edit();
+	void display();
 }
