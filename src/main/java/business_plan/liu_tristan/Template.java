@@ -39,12 +39,15 @@ public class Template
 		return deepCopy;
 	}
 
-	public void addBranch(TemplateSection node) throws ChildLIimitException, NoParentException, NullChildException
+	public TemplateSection addBranch(TemplateSection node) throws ChildLIimitException, NoParentException, NullChildException
 	{
-		TemplateSection section = findBranch(node, templateRoot);
+		
 		if(node.parent != null)
 		{
-			node.parent.addChild(section.deepCopy());
+			TemplateSection section = findBranch(node, templateRoot);
+			TemplateSection toadd = section.deepCopy();
+			node.parent.addChild(toadd);
+			return toadd;
 		}
 		else
 		{

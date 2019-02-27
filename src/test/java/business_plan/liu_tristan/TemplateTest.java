@@ -2,7 +2,9 @@ package business_plan.liu_tristan;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 
 class TemplateTest
 {
@@ -192,7 +194,105 @@ class TemplateTest
 		template = Template.load("VMOSA.xml");
 		assertEquals(vmosa, template);
 		
-		
 	}
 	
+	
+	@Test
+	void testAddBrach() throws ChildLIimitException, NullChildException, NoParentException
+	{
+		TemplateSection root = new TemplateSection("Vision", "Vision");
+		TemplateSection node1 = new TemplateSection("Mission", "Mission",3);
+		TemplateSection node2 = new TemplateSection("Objective", "Objective",3);
+		TemplateSection node3 = new TemplateSection("Strategy", "Strategy",3);
+		TemplateSection node4 = new TemplateSection("Action", "Action");
+		
+		root.addChild(node1);
+		node1.addChild(node2);
+		node2.addChild(node3);
+		node3.addChild(node4);
+		
+		Template vmosa = new Template(root, root.deepCopy());
+		vmosa.setDeveloperTemplateName("VMOSA");
+		vmosa.setUserTemplateName("VMOSA");
+		// add a branch of first node, shouldn't work
+		try
+		{
+			vmosa.addBranch(root);
+			assert false;
+		} catch (NoParentException e)
+		{
+			e.getStackTrace();
+			// TODO: handle exception
+		}
+		
+		//add more children than there could be, shouldn't work
+		try
+		{
+			vmosa.addBranch(node1);
+			assert false;
+		} catch (ChildLIimitException e)
+		{
+			e.getStackTrace();
+			// TODO: handle exception
+		}
+		
+		//add branch that is next to node2
+		vmosa.addBranch(node2);
+		assertEquals(2, node1.children.size());
+		assertEquals(node2, node1.children.get(1));
+		
+		vmosa.addBranch(node2);
+		assertEquals(3, node1.children.size());
+		assertEquals(node2, node1.children.get(2));
+		
+		
+		//add more children than there could be, shouldn't work
+		try
+		{
+			vmosa.addBranch(node2);
+			assert false;
+		} catch (ChildLIimitException e)
+		{
+			e.getStackTrace();
+			// TODO: handle exception
+		}
+		
+	}
+	@Test
+	void testDeleteBrach() throws ChildLIimitException, NullChildException, ChildNotFoundException, NoParentException
+	{
+	
+		TemplateSection root = new TemplateSection("Vision", "Vision");
+		TemplateSection node1 = new TemplateSection("Mission", "Mission",3);
+		TemplateSection node2 = new TemplateSection("Objective", "Objective",3);
+		TemplateSection node3 = new TemplateSection("Strategy", "Strategy",3);
+		TemplateSection node4 = new TemplateSection("Action", "Action");
+		
+		root.addChild(node1);
+		node1.addChild(node2);
+		node2.addChild(node3);
+		node3.addChild(node4);
+		
+		Template vmosa = new Template(root, root.deepCopy());
+		try
+		{
+			vmosa.deleteBranch(root);
+		} catch (NoParentException e)
+		{
+			// TODO: handle exception
+		}
+		
+		vmosa.addBranch(node2);
+		vmosa.deleteBranch(node2);
+		assertEquals(1, node1.children.size());
+		
+		try
+		{
+			vmosa.deleteBranch(node2);
+		} catch (NoParentException e)
+		{
+			// TODO: handle exception
+		}
+		
+	}
 }
