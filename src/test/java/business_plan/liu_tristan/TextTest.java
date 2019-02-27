@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 public class TextTest
 {
 	@Test
+	//This tests the getting & setting for the String attribute of Text.
+	//It also compares Text objects with identical or different text.
 	public static void main(String[] args)
 	{
 		Text t = new Text("hello");
