@@ -194,20 +194,7 @@ public class Template
 		this.templateRoot = templateRoot;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode()
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((developerTemplateName == null) ? 0 : developerTemplateName.hashCode());
-		result = prime * result + ((root == null) ? 0 : root.hashCode());
-		result = prime * result + ((templateRoot == null) ? 0 : templateRoot.hashCode());
-		result = prime * result + ((userTemplateName == null) ? 0 : userTemplateName.hashCode());
-		return result;
-	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
@@ -215,7 +202,6 @@ public class Template
 	@Override
 	public boolean equals(Object obj)
 	{
-<<<<<<< HEAD
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -258,13 +244,4 @@ public class Template
 
 
 
-=======
-		// TODO Auto-generated method stub
-		Template template = (Template) object;
-		return this.developerTemplateName.equals(template.developerTemplateName)
-				&& this.userTemplateName.equals(template.userTemplateName)
-				&& this.root.equals(template.root)
-				&& this.templateRoot.equals(template.templateRoot);	
-	}	
-}
->>>>>>> refs/remotes/origin/master
+

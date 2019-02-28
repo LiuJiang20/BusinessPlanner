@@ -1,15 +1,16 @@
 package business_plan.liu_tristan;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
 class TemplateSectionTest
 {
+
+	
 	@Test
 	//This tests the constructor for TemplateSection.
-	static void testConstruct()
+	 void testConstruct()
 	{
 		//This uses the version of the constructor without a ChildLimit parameter.
 		//In this case the ChildLimit should initialize to 1.
@@ -28,7 +29,7 @@ class TemplateSectionTest
 	
 	@Test
 	//This tests the .equals() method for different TemplateSection objects.
-	static void testEquals() throws ChildLIimitException
+	 void testEquals() throws ChildLIimitException, NullChildException
 	{
 		TemplateSection section1 = new TemplateSection("Vision", "Vision", 1);
 		TemplateSection section2 = new TemplateSection("Mission", "Mission 1", 1);
@@ -67,7 +68,7 @@ class TemplateSectionTest
 	
 	@Test
 	//This tests the deepCopy method. A section should always be equal to its own copy.
-	static void testDeepCopy()
+	 void testDeepCopy()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
 		TemplateSection section2 = section1.deepCopy();
@@ -76,7 +77,7 @@ class TemplateSectionTest
 	
 	@Test
 	//This tests the methods for adding and removing contents.
-	static void testContent()
+	 void testContent()
 	{
 		//At first the list containing content should be of size 0 since section 1 has none.
 		//Then it will be altered using the appropriate methods and checked for.
@@ -97,7 +98,7 @@ class TemplateSectionTest
 	@Test
 	//This tests the methods for adding and removing children.
 	//Works pretty much the same as the test for the content methods.
-	static void testChild()
+	 void testChild() throws NullChildException
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
 		assert section1.children.size() == 0;
@@ -120,7 +121,7 @@ class TemplateSectionTest
 	
 	@Test
 	//Test for getting and setting Category and Name.
-	static void testCategoryName()
+	 void testCategoryName()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
 		assert section1.getCategory() == "Objective";
@@ -133,7 +134,7 @@ class TemplateSectionTest
 	
 	@Test
 	//Test for getting and setting parents.
-	static void testParent()
+	 void testParent()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
 		assert section1.getParent() == null;
@@ -144,7 +145,7 @@ class TemplateSectionTest
 	
 	@Test
 	//Test for getting and setting ChildLimit.
-	static void testChildLimit()
+	 void testChildLimit()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
 		assert section1.getChildLimit() == 1;
@@ -154,7 +155,7 @@ class TemplateSectionTest
 	
 	@Test
 	//Test for getting the Contents of a TemplateSection.
-	static void testGetContents()
+	 void testGetContents()
 	{
 		TemplateSection section1 = new TemplateSection("Objective", "Objective 1");
 		assert section1.getContents().size() == 0;
@@ -162,19 +163,5 @@ class TemplateSectionTest
 		section1.addContent(c);
 		assert section1.getContents().size() == 1;
 	}
-	
-	@Test
-	//This is the main method that executes all the individaul tests.
-	public static void main(String[] args) throws ChildLIimitException
-	{
-		testConstruct();
-		testEquals();
-		testDeepCopy();
-		testContent();
-		testChild();
-		testCategoryName();
-		testParent();
-		testChildLimit();
-		testGetContents();
-	}
+
 }

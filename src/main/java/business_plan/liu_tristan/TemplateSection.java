@@ -26,7 +26,7 @@ public class TemplateSection
 	 * @param name
 	 */
 
-<<<<<<< HEAD
+
 
 	// Requirement for serialization
 	public TemplateSection()
@@ -36,8 +36,8 @@ public class TemplateSection
 	
 	//Constructor to set category, name, childLimit 
 
-=======
->>>>>>> refs/remotes/origin/master
+
+
 	//This constructor takes Strings for the category and name of the section.
 	//It also takes a value for the maximum possible children.
 	public TemplateSection(String category, String name,double childLimit)
@@ -186,10 +186,9 @@ public class TemplateSection
 		return true;
 		
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/master
+
+
 	//Below are the methods for adding and deleting Content objects.
 	public void addContent(Content c)
 	{
@@ -207,15 +206,11 @@ public class TemplateSection
 		
 	}
 	
-<<<<<<< HEAD
+
 
 	@Transient
 	//These methods allow for adding and deleting child sections.
 	public void addChild(TemplateSection child) throws ChildLIimitException, NullChildException
-=======
-	//These methods allow for adding and deleting child sections.
-	public void addChild(TemplateSection child) throws ChildLIimitException
->>>>>>> refs/remotes/origin/master
 	{
 		if(child == null)
 		{

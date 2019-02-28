@@ -49,7 +49,7 @@ public class Text implements Content
 		Text t = (Text) obj;
 		return text.equals(t.text);
 	}
-<<<<<<< HEAD
+
 
 	/* (non-Javadoc)
 	 * @see business_plan.liu_tristan.Content#compareTo(business_plan.liu_tristan.Content)
@@ -62,14 +62,4 @@ public class Text implements Content
 		return this.text.compareTo(other.text);
 	}
 
-=======
-	
-	public void edit()
-	{
-	}
-	
-	public void display()
-	{
-	}
->>>>>>> refs/remotes/origin/master
 }
