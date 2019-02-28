@@ -250,79 +250,10 @@ public class Template
 	}
 
 	
-//	/* 
-//	 * @see java.lang.Object#equals(java.lang.Object)
-//	 */
-//	@Override
-//	public boolean equals(Object object)
-//	{
-//		// TODO Auto-generated method stub
-//		Template template = (Template) object;
-//	
-//		
-//		if(this.userTemplateName == null)
-//		{
-//			if(template.userTemplateName != null)
-//			{return false;}
-//		}
-//		else
-//		{
-//			if(! userTemplateName.equals(template.userTemplateName))
-//			{
-//				return false;
-//			}
-//		}
-//		
-//		if(developerTemplateName == null)
-//		{
-//			if(template.developerTemplateName !=null)
-//			{return false;}
-//		}
-//		else
-//		{
-//			if(!developerTemplateName.equals(template.developerTemplateName))
-//			{
-//				return false;
-//			}
-//		}
-//		
-//		if(root == null)
-//		{
-//			if(template.root != null)
-//			{
-//				return false;
-//			}
-//		}
-//		else
-//		{
-//			if(!root.equals(template.root))
-//			{
-//				return false;
-//			}
-//		}
-//		
-//		
-//		if(templateRoot == null)
-//		{
-//			if(template.templateRoot!= null)
-//			{
-//				return false;
-//			}
-//		}
-//		else
-//		{
-//			if(!templateRoot.equals(template.templateRoot))
-//			{
-//				return false;
-//			}
-//		}
-//		return true;
-////		return this.developerTemplateName.equals(template.developerTemplateName)
-////				&& this.userTemplateName.equals(template.userTemplateName)
-////				&& this.root.equals(template.root)
-////				&& this.templateRoot.equals(template.templateRoot);
-//		
-//	}
 
 	
 }
+
+
+
+

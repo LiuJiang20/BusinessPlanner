@@ -54,4 +54,11 @@ public class Image implements Content
 		return URL.equals(i.URL);
 	}
 	
+	public void edit()
+	{
+	}
+	
+	public void display()
+	{
+	}	
 }

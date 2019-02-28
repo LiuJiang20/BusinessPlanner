@@ -60,5 +60,5 @@ public class Text implements Content
 		Text other = (Text) o;
 		return this.text.compareTo(other.text);
 	}
-	
+
 }

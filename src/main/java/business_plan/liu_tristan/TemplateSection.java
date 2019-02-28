@@ -13,18 +13,19 @@ import java.beans.*;
 public class TemplateSection
 {
 
-	TemplateSection parent = null;
-	ArrayList<TemplateSection> children;
-	double childLimit;
-	String category;
-	String name;
-	ArrayList<Content> contents;
+	TemplateSection parent = null; //If the section has a parent section, this becomes it.
+	ArrayList<TemplateSection> children; //List of subsections for this section.
+	double childLimit; //The maximum number of child sections this one can have.
+	String category; //The category of this TemplateSection.
+	String name; //What this particular object is actually called in the design.
+	ArrayList<Content> contents; //The contents of this section.
 	
 	
 	/**
 	 * @param category
 	 * @param name
 	 */
+
 
 	// Requirement for serialization
 	public TemplateSection()
@@ -33,6 +34,9 @@ public class TemplateSection
 	}
 	
 	//Constructor to set category, name, childLimit 
+
+	//This constructor takes Strings for the category and name of the section.
+	//It also takes a value for the maximum possible children.
 	public TemplateSection(String category, String name,double childLimit)
 	{
 		
@@ -43,6 +47,8 @@ public class TemplateSection
 		contents = new ArrayList<Content>();
 	}
 	
+	//This alternate constructor takes only a name and category.
+	//The child limit is automatically set to 1.
 	public TemplateSection(String category, String name)
 	{
 		this(category, name, 1);
@@ -57,6 +63,8 @@ public class TemplateSection
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
+	//This method compares two TemplateSection objects to see if they're identical.
+	//It compares their names, categories, children, contents, and child limit.
 	public boolean equals(Object object)
 	{
 		TemplateSection t =(TemplateSection)object;
@@ -175,6 +183,8 @@ public class TemplateSection
 		return true;
 		
 	}
+
+	//Below are the methods for adding and deleting Content objects.
 	public void addContent(Content c)
 	{
 		contents.add(c);
@@ -186,12 +196,14 @@ public class TemplateSection
 			contents.remove(content);
 		else
 		{
-			throw new ContentNotFoundException();
+			throw new ContentNotFoundException(); //Throws exception if the desired Content isn't there.
 		}
 		
 	}
 	
+
 	@Transient
+	//These methods allow for adding and deleting child sections.
 	public void addChild(TemplateSection child) throws ChildLIimitException, NullChildException
 	{
 		if(child == null)
@@ -207,7 +219,7 @@ public class TemplateSection
 		}
 		else
 		{
-			throw new ChildLIimitException();
+			throw new ChildLIimitException(); //Throws exception if no more children can be added.
 		}
 	}
 
@@ -220,10 +232,12 @@ public class TemplateSection
 		}
 		else
 		{
-			throw new ChildNotFoundException();
+			throw new ChildNotFoundException(); //Throws exception if the child doesn't exist.
 		}
 	}
 
+	//This method returns a deep copy of the TemplateSection object.
+	//It copies everything the TemplateSection has.
 	public TemplateSection deepCopy()
 	{
 		TemplateSection deepCopy = new TemplateSection(this.category, this.name);
@@ -348,9 +362,4 @@ public class TemplateSection
 	{
 		this.contents = contents;
 	}
-	
-
-	
-
-
 }
