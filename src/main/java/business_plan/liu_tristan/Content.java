@@ -22,3 +22,4 @@ public interface Content extends Comparable<Content>
 	
 
 }
+

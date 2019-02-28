@@ -215,6 +215,7 @@ public class Template
 	@Override
 	public boolean equals(Object obj)
 	{
+<<<<<<< HEAD
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -257,3 +258,13 @@ public class Template
 
 
 
+=======
+		// TODO Auto-generated method stub
+		Template template = (Template) object;
+		return this.developerTemplateName.equals(template.developerTemplateName)
+				&& this.userTemplateName.equals(template.userTemplateName)
+				&& this.root.equals(template.root)
+				&& this.templateRoot.equals(template.templateRoot);	
+	}	
+}
+>>>>>>> refs/remotes/origin/master
