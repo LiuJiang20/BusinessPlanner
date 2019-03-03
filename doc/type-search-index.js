@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"business_plan.liu_tristan","l":"Template"}]
