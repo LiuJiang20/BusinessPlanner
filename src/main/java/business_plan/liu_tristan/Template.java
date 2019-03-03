@@ -19,13 +19,15 @@ public class Template
 	TemplateSection root;
 	TemplateSection templateRoot;
 
-	//Constructor for serialization
+	/**Constructor for serialization
+	*/
 	public Template()
 	{
 		
 	}
 	
-	//Constructor users and developers actually use
+	/**Constructor users and developers actually use
+	*/
 	public Template(TemplateSection root, TemplateSection templateRoot)
 	{
 		this.root = root;
@@ -33,7 +35,9 @@ public class Template
 	}
 
 	
-	//return a deep copy of the template itself
+	/**
+	 * @return  return a deep copy of the template itself
+	*/
 	public Template deepCopy()
 	{
 		TemplateSection newRoot = root.deepCopy();
@@ -44,11 +48,14 @@ public class Template
 		return deepCopy;
 	}
 
-	//add a branch to user's template tree(root not templateRoot) based on the node 
-	//sent back by the GUI, using the blank node stored in templateroot. 
-	//It doesn't allow add another new root node, as well as 
-	// more nodes than that the parent can handle. That is to say, it the parent's nodes
-	// have reached the limit, addbranch won't add another branch.  
+	/**
+		add a branch to user's template tree(root not templateRoot) based on the node 
+		sent back by the GUI, using the blank node stored in templateroot. 
+		It doesn't allow add another new root node, as well as 
+		 more nodes than that the parent can handle. That is to say, it the parent's nodes
+		 have reached the limit, addbranch won't add another branch.  
+	
+	 */
 	public TemplateSection addBranch(TemplateSection node) throws ChildLIimitException, NoParentException, NullChildException
 	{
 		
@@ -65,8 +72,9 @@ public class Template
 		}
 	}
 	
-	//Helper class to find the correct blank node to make a deep copy based on category
-	//called by addBranch
+	/**Helper class to find the correct blank node to make a deep copy based on category
+	*called by addBranch
+	*/
 	private TemplateSection findBranch(TemplateSection add, TemplateSection template)
 	{
 		if(add.category.equals(template.category))
@@ -79,7 +87,8 @@ public class Template
 		}
 	}
 	
-	//delete the branch in the user's template based on the node passed in by GUI.
+	/**delete the branch in the user's template based on the node passed in by GUI.
+	*/
 	public void deleteBranch(TemplateSection node) throws ChildNotFoundException, NoParentException
 	{
 		if(node.parent != null)
@@ -93,8 +102,10 @@ public class Template
 	}
 	
 	
-	//saved this template object by XML serialization 
-	//The filename is: userTemplateName+".xml"
+	/**saved this template object by XML serialization 
+	 * The filename is: userTemplateName+".xml"
+	 * 
+	 */
 	public void save()
 	{
 		XMLEncoder encoder =null;
@@ -114,7 +125,11 @@ public class Template
 
 	}
 
-	//Reload the object from file based on the filename
+	/**Reload the object from file based on the filename
+	 * 
+	 * @param filename a string of the xml file for the object to load
+	 * @return return template based on file name
+	 */
 	public static Template load(String filename)
 	{
 		XMLDecoder decoder=null;

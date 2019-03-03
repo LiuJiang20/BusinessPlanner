@@ -28,18 +28,18 @@ public class TemplateSection
 
 
 
-	// Requirement for serialization
+	/** Requirement for serialization
+	 * 
+	 */
 	public TemplateSection()
 	{
 		// TODO Auto-generated constructor stub
 	}
 	
-	//Constructor to set category, name, childLimit 
-
-
-
-	//This constructor takes Strings for the category and name of the section.
-	//It also takes a value for the maximum possible children.
+	/**Constructor to set category, name, childLimit 
+	This constructor takes Strings for the category and name of the section.
+	It also takes a value for the maximum possible children.
+	*/
 	public TemplateSection(String category, String name,double childLimit)
 	{
 		
@@ -50,8 +50,9 @@ public class TemplateSection
 		contents = new ArrayList<Content>();
 	}
 	
-	//This alternate constructor takes only a name and category.
-	//The child limit is automatically set to 1.
+	/**This alternate constructor takes only a name and category.
+	The child limit is automatically set to 1.
+	*/
 	public TemplateSection(String category, String name)
 	{
 		this(category, name, 1);
@@ -62,12 +63,9 @@ public class TemplateSection
 
 
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/**
+	 * rewritten equals() for testing
 	 */
-	@Override
-	//This method compares two TemplateSection objects to see if they're identical.
-	//It compares their names, categories, children, contents, and child limit.
 	public boolean equals(Object object)
 	{
 		TemplateSection t =(TemplateSection)object;
@@ -189,7 +187,11 @@ public class TemplateSection
 
 
 
-	//Below are the methods for adding and deleting Content objects.
+	/**
+	 * If developer want to add more elements into a TemplateSection, they will 
+	 * create and pass the content object to addContent() function
+	 * @param c the object that is clicked by user in the interface
+	 */
 	public void addContent(Content c)
 	{
 		contents.add(c);
@@ -209,7 +211,12 @@ public class TemplateSection
 
 
 	@Transient
-	//These methods allow for adding and deleting child sections.
+	/**
+	 * 
+	 * @param child The child the user want to add
+	 * @throws ChildLIimitException throw ChildLIimitException when the maximum capacity of the parent has been reached
+	 * @throws NullChildException throw NullChildException if the child does not exist.
+	 */
 	public void addChild(TemplateSection child) throws ChildLIimitException, NullChildException
 	{
 		if(child == null)
@@ -229,6 +236,11 @@ public class TemplateSection
 		}
 	}
 
+	/**
+	 * 
+	 * @param child Child 
+	 * @throws ChildNotFoundException
+	 */
 	public void deleteChild(TemplateSection child) throws ChildNotFoundException
 	{
 		if(children.indexOf(child)!=-1)
