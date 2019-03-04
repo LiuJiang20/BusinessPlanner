@@ -8,6 +8,6 @@ public class NoParentException extends Exception
 	public NoParentException()
 	{
 		// TODO Auto-generated constructor stub
-		super();
+		super("No parent");
 	}
 }

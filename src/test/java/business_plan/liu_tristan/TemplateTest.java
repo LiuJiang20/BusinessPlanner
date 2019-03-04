@@ -283,6 +283,8 @@ class TemplateTest
 			// TODO: handle exception
 		}
 		
+		NoParentException thrown = assertThrows(NoParentException.class, ()->vmosa.deleteBranch(root),"Fail");
+		assertTrue(thrown.getMessage().contains("No parent"));
 		vmosa.addBranch(node2);
 		vmosa.deleteBranch(node2);
 		assertEquals(1, node1.children.size());
